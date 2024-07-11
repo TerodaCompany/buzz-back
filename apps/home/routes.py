@@ -133,7 +133,7 @@ def trading_coin_remove(coin_id):
 
 @blueprint.route('/home/discovercoins', methods=['GET'])
 @jwt_required()
-def update1(coin_id):
+def update1():
     try:
         discover_new_coins()
     except Exception as e:
@@ -142,7 +142,7 @@ def update1(coin_id):
 
 @blueprint.route('/home/updatecoins', methods=['GET'])
 @jwt_required()
-def update2(coin_id):
+def update2():
     try:
         update_data()
     except Exception as e:
