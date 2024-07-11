@@ -15,7 +15,7 @@ import datetime
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
 # The configuration
-get_config_mode = 'Debug' if DEBUG else 'Production'
+get_config_mode = False#'Debug' if DEBUG else 'Production'
 
 try:
 
@@ -37,7 +37,7 @@ def job1():
     with scheduler.app.app_context():
         discover_new_coins()
 
-scheduler.add_job(id='job1', func=job1, trigger='interval', seconds=7200, next_run_time=datetime.datetime.now()+datetime.timedelta(seconds=10))
+scheduler.add_job(id='job1', func=job1, trigger='interval', seconds=7200)#, next_run_time=datetime.datetime.now()+datetime.timedelta(seconds=10))
 
 
 def job2():
@@ -48,7 +48,7 @@ def job2():
         #except Exception as e:
         #    print(e)
 
-scheduler.add_job(id='job2', func=job2, trigger='interval', seconds=10200, next_run_time=datetime.datetime.now()+datetime.timedelta(seconds=30))
+scheduler.add_job(id='job2', func=job2, trigger='interval', seconds=10200)#, next_run_time=datetime.datetime.now()+datetime.timedelta(seconds=30))
 
 # if not DEBUG:
 #     Minify(app=app, html=True, js=False, cssless=False)
@@ -60,4 +60,4 @@ if DEBUG:
     app.logger.info('ASSETS_ROOT      = ' + app_config.ASSETS_ROOT )
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='127.0.0.1', port=8080)
