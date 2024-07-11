@@ -28,13 +28,10 @@ def register():
         return jsonify({'message': 'Missing username or password'}), 400
 
 
-    if users_count < MAX_NUM_USERS:
-        new_user = User(username=username, password=bcrypt.generate_password_hash(password))
-        db.session.add(new_user)
-        db.session.commit()
-        return jsonify({'message': 'Registeration sucessful'}), 200
-    else: # just in case
-        return jsonify({'message': 'Registeration stopped'}), 401
+    new_user = User(username=username, password=bcrypt.generate_password_hash(password))
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({'message': 'Registeration sucessful'}), 200
 
 @blueprint.route('/login', methods=['POST'])
 def login():
