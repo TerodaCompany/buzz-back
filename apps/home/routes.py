@@ -12,14 +12,14 @@ from apps import db, bcrypt
 def index():
     return render_template('home/data.html', segment='index')
 
-MAX_NUM_USERS = 5
+#MAX_NUM_USERS = 5
 
 # Can only register once. Change MAX_NUM_USERS if you want more. It is best to disable this api after you have your database set up
 @blueprint.route('/register', methods=['POST'])
 def register():
-    users_count = User.query.count()
-    if users_count >= MAX_NUM_USERS:
-        return jsonify({'message': 'Registeration stopped'}), 401
+    #users_count = User.query.count()
+    #if users_count >= MAX_NUM_USERS:
+    #    return jsonify({'message': 'Registeration stopped'}), 401
     
     username = request.json.get('username', None)
     password = request.json.get('password', None)
