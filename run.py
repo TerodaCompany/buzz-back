@@ -15,7 +15,7 @@ import datetime
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
 
 # The configuration
-get_config_mode = False#'Debug' if DEBUG else 'Production'
+get_config_mode = 'Production'#'Debug' if DEBUG else 'Production'
 
 try:
 
