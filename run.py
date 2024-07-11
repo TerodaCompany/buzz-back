@@ -12,7 +12,7 @@ from apps.home.data_collector import *
 import datetime
 
 # WARNING: Don't run with debug turned on in production!
-DEBUG = (os.getenv('DEBUG', 'False') == 'True')
+DEBUG = False#(os.getenv('DEBUG', 'False') == 'True')
 
 # The configuration
 get_config_mode = 'Production'#'Debug' if DEBUG else 'Production'
