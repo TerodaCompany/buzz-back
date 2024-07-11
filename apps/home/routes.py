@@ -126,9 +126,7 @@ def trading_coin_remove(coin_id):
         db.session.commit()
         return(jsonify({'message': 'Removal successful'}))
     else:
-        return(jsonify({'message':'Coin not found.'}, status=404))
-
-    return redirect("/home/trading")
+        return jsonify({'message':'Coin not found.'}), 404
 
 
 @blueprint.route('/home/discovercoins', methods=['GET'])
@@ -137,8 +135,8 @@ def update1():
     try:
         discover_new_coins()
     except Exception as e:
-        return (jsonify({'message':'Failed to discover coins'}, status=400))
-    return (jsonify({'message':'Successful'}, status=200))
+        return jsonify({'message':'Failed to discover coins'}), 400
+    return jsonify({'message':'Successful'}), 200
 
 @blueprint.route('/home/updatecoins', methods=['GET'])
 @jwt_required()
@@ -146,5 +144,5 @@ def update2():
     try:
         update_data()
     except Exception as e:
-        return (jsonify({'message':'Failed to update coins'}, status=400))
-    return (jsonify({'message':'Successful'}, status=200))
+        return jsonify({'message':'Failed to update coins'}), 400
+    return jsonify({'message':'Successful'}), 200
