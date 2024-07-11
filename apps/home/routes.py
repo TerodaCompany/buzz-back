@@ -35,6 +35,8 @@ def register():
 
 @blueprint.route('/login', methods=['POST'])
 def login():
+    users_count = User.query.count()
+    print(users_count)
     username = request.json.get('username', None)
     password = request.json.get('password', None)
 
