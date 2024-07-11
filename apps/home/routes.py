@@ -131,3 +131,20 @@ def trading_coin_remove(coin_id):
     return redirect("/home/trading")
 
 
+@blueprint.route('/home/discovercoins', methods=['GET'])
+@jwt_required()
+def update_coins(coin_id):
+    try:
+        discover_new_coins()
+    except Exception as e:
+        return (jsonify({'message':'Failed to discover coins'}, status=400))
+    return (jsonify({'message':'Successful'}, status=200))
+
+@blueprint.route('/home/updatecoins', methods=['GET'])
+@jwt_required()
+def update_coins(coin_id):
+    try:
+        update_data()
+    except Exception as e:
+        return (jsonify({'message':'Failed to update coins'}, status=400))
+    return (jsonify({'message':'Successful'}, status=200))
